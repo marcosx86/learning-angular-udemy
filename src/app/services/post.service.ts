@@ -29,6 +29,11 @@ export class PostService {
     return this.http.put<Post>(putUrl, post, httpOptions);
   }
 
+  getPost(id: number): Observable<Post> {
+    const getUrl = `${this.postsUrl}/${id}`;
+    return this.http.get<Post>(getUrl);
+  }
+
   removePost(post: Post | number): Observable<Post> {
     const id = typeof post === 'number' ? post : post.id;
     const delUrl = `${this.postsUrl}/${id}`;
